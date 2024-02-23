@@ -1,7 +1,7 @@
 function App() {
   return (
-    <div className="bg-black">
-      <p className="text-xl">Click on the Vite and React logos to learn more</p>
+    <div>
+      <p className="text-darkGrayishBlue ">Drag and drop to reorder list</p>
     </div>
   );
 }
