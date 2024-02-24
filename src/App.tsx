@@ -1,9 +1,10 @@
-function App() {
+export default function App() {
   return (
     <div>
-      <p className="text-darkGrayishBlue ">Drag and drop to reorder list</p>
+      <h1 className="text-lightGrayishBlue font-bold text-2xl">TODO</h1>
+      <p className="text-darkGrayishBlue text-base font-medium">
+        Drag and drop to reorder list
+      </p>
     </div>
   );
 }
-
-export default App;

@@ -32,7 +32,7 @@ export default {
       veryDarkGrayishBlue: "hsl(237, 14%, 26%)",
     },
     fontFamily: {
-      sans: ["Josefin Sans"],
+      display: ["Josefin Sans", "sans-serif"],
     },
     extend: {},
   },
