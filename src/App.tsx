@@ -25,9 +25,9 @@ export default function App() {
       <NewTask />
       <TaskList />
       <SortTasks />
-      <p className="text-darkGrayishBlue text-base font-medium">
+      {/*       <p className="text-darkGrayishBlue text-base font-medium">
         Drag and drop to reorder list
-      </p>
+      </p> */}
     </div>
   );
 }

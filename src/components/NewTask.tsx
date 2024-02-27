@@ -3,7 +3,7 @@ export default function NewTask() {
     <>
       <div
         className="flex items-center justify-start 
-      w-[21rem] h-12
+      w-[20.5rem] h-12
       bg-veryDarkDesaturatedBlue rounded-md
       pl-4"
       >
