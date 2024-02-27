@@ -7,7 +7,7 @@ export default function NewTask() {
       bg-veryDarkDesaturatedBlue rounded-md
       pl-4"
       >
-        <div className="w-5 h-5 border border-veryDarkGrayishBlue rounded-full "></div>
+        <span className="w-5 h-5 border border-veryDarkGrayishBlue rounded-full " />
         <form className="pl-4 text-veryDarkGrayishBlue">
           <input
             className="bg-veryDarkDesaturatedBlue 
