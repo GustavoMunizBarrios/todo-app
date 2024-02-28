@@ -1,4 +1,3 @@
-import { useState } from "react";
 import iconCross from "../images/icon-cross.svg";
 import iconCheck from "../images/icon-check.svg";
 
@@ -7,23 +6,14 @@ interface Task {
   task: string;
   done: boolean;
 }
-const initialTasks: Task[] = [
-  { id: 1, task: "10 minutes meditation", done: false },
-  { id: 2, task: "Read for 1 hour", done: false },
-  { id: 3, task: "Complete online JS course", done: false },
-  { id: 4, task: "Pick up groceries", done: true },
-];
-
-export default function TaskList() {
-  const [tasks, setTasks] = useState<Task[]>(initialTasks);
-
-  function handleToggleTask(id: number) {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === id ? { ...task, done: !task.done } : task
-      )
-    );
-  }
+export default function TaskList({
+  tasks,
+  handleToggleTask,
+}: {
+  tasks: Task[];
+  handleToggleTask: (id: number) => void;
+}) {
+  const numDoneTasks = tasks.filter((task) => !task.done).length;
 
   return (
     <div className="pt-6">
@@ -68,7 +58,9 @@ export default function TaskList() {
             </button>
           </li>
         ))}
-        {/* Bottom of the list  */}
+        {/* ++++++++++++++++++++++++++++++++++++ */}
+        {/* Bottom of the list (count and clear) */}
+        {/* ++++++++++++++++++++++++++++++++++++ */}
         <div
           className="flex items-center justify-between 
             w-[20.5rem] h-12 pl-4 pr-4
@@ -76,8 +68,11 @@ export default function TaskList() {
             rounded-b-md
             text-xs text-darkGrayishBlue"
         >
-          <span>5 items left</span>
-          <span>Clear Completed</span>
+          <p>{numDoneTasks} Tasks left</p>
+
+          <button className="hover:text-lightGrayishBlueHover">
+            <p>Clear Completed</p>
+          </button>
         </div>
       </ul>
     </div>
