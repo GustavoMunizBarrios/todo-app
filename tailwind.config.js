@@ -13,6 +13,8 @@ export default {
     colors: {
       /* Primary */
       brightBlue: "hsl(220, 98%, 61%)",
+      cyan: "hsl(192, 100%, 67%)",
+      pink: "hsl(280, 87%, 65%)",
       checkBackground:
         "linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%)",
 

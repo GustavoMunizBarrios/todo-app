@@ -1,28 +1,59 @@
-const initialTasks = [
+import { useState } from "react";
+import iconCross from "../images/icon-cross.svg";
+import iconCheck from "../images/icon-check.svg";
+
+interface Task {
+  id: number;
+  task: string;
+  done: boolean;
+}
+const initialTasks: Task[] = [
   { id: 1, task: "10 minutes meditation", done: false },
   { id: 2, task: "Read for 1 hour", done: false },
   { id: 3, task: "Complete online JS course", done: false },
   { id: 4, task: "Pick up groceries", done: true },
 ];
 
-import iconCross from "../images/icon-cross.svg";
-
 export default function TaskList() {
+  const [tasks, setTasks] = useState<Task[]>(initialTasks);
+
+  function handleToggleTask(id: number) {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === id ? { ...task, done: !task.done } : task
+      )
+    );
+  }
+
   return (
     <div className="pt-6">
       <ul>
-        {initialTasks.map((task) => (
+        {tasks.map((task) => (
           <li
-            className="flex items-center justify-start 
+            key={task.id}
+            className="flex items-center justify-start relative
             w-[20.5rem] h-12
             bg-veryDarkDesaturatedBlue
             pl-4 border-b-[1px] border-veryDarkGrayishBlue"
           >
-            <input type="checkbox" checked={task.done} className="hidden" />
-            <span
-              className={`block w-5 h-5 bg-transparent rounded-full border-[1px] border-veryDarkGrayishBlue mr-3
-               `}
-            ></span>
+            <input
+              type="checkbox"
+              /* checked={task.done} */
+              className={`appearance-none w-5 h-5 rounded-full border border-veryDarkGrayishBlue mr-3 cursor-pointer
+              ${task.done ? "bg-gradient-to-r from-cyan to-pink" : ""} 
+              `}
+              onChange={() => {
+                handleToggleTask(task.id);
+              }}
+            />
+            <img
+              src={iconCheck}
+              alt="Icon for Checking Tasks"
+              className={`absolute w-2 h-2 left-[1.4rem] ${
+                task.done ? "" : "hidden"
+              }`}
+            />
+
             <span
               className={`text-xs ${
                 task.done
