@@ -27,6 +27,9 @@ export default function App() {
       )
     );
   }
+  function handleDeleteTask(id: number) {
+    setTasks((task) => task.filter((task) => task.id !== id));
+  }
   return (
     <div className="relative flex flex-col h-screen text-center items-center">
       <div className="flex w-screen justify-between items-center pt-11 pr-5 pl-5 pb-8">
@@ -44,7 +47,11 @@ export default function App() {
         alt="Background dark"
       />
       <NewTask />
-      <TaskList tasks={tasks} handleToggleTask={handleToggleTask} />
+      <TaskList
+        tasks={tasks}
+        handleToggleTask={handleToggleTask}
+        handleDeleteTask={handleDeleteTask}
+      />
       <SortTasks />
       {/*       <p className="text-darkGrayishBlue text-base font-medium">
         Drag and drop to reorder list

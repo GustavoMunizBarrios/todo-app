@@ -9,9 +9,11 @@ interface Task {
 export default function TaskList({
   tasks,
   handleToggleTask,
+  handleDeleteTask,
 }: {
   tasks: Task[];
   handleToggleTask: (id: number) => void;
+  handleDeleteTask: (id: number) => void;
 }) {
   const numDoneTasks = tasks.filter((task) => !task.done).length;
 
@@ -53,7 +55,10 @@ export default function TaskList({
             >
               {task.task}
             </span>
-            <button className="ml-auto mr-4">
+            <button
+              onClick={() => handleDeleteTask(task.id)}
+              className="ml-auto mr-4"
+            >
               <img src={iconCross} alt="cross icon" className="w-3" />
             </button>
           </li>
