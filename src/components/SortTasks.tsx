@@ -17,19 +17,25 @@ export default function SortTasks({
     >
       <button
         onClick={() => setFilter("All")}
-        className={currentFilter === "All" ? "text-brightBlue" : ""}
+        className={`hover:text-lightGrayishBlueHover ${
+          currentFilter === "All" ? "text-brightBlue" : ""
+        }`}
       >
         All
       </button>
       <button
         onClick={() => setFilter("Active")}
-        className={currentFilter === "Active" ? "text-brightBlue" : ""}
+        className={`hover:text-lightGrayishBlueHover ${
+          currentFilter === "Active" ? "text-brightBlue" : ""
+        }`}
       >
         Active
       </button>
       <button
         onClick={() => setFilter("Completed")}
-        className={currentFilter === "Completed" ? "text-brightBlue" : ""}
+        className={`hover:text-lightGrayishBlueHover ${
+          currentFilter === "Completed" ? "text-brightBlue" : ""
+        }`}
       >
         Completed
       </button>

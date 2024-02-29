@@ -49,7 +49,7 @@ export default function App() {
     }
   }
   return (
-    <div className="relative flex flex-col h-screen text-center items-center">
+    <div className="relative flex flex-col h-screen text-center items-center font-display">
       <div className="flex w-screen justify-between items-center pt-11 pr-5 pl-5 pb-8">
         <h1 className="text-lightGrayishBlue font-bold text-3xl tracking-[10px]">
           TODO
@@ -72,9 +72,6 @@ export default function App() {
         handleDeleteCompletedTasks={handleDeleteCompletedTasks}
       />
       <SortTasks setFilter={setFilter} currentFilter={filter} />
-      {/*       <p className="text-darkGrayishBlue text-base font-medium">
-        Drag and drop to reorder list
-      </p> */}
     </div>
   );
 }

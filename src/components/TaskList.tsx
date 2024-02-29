@@ -20,7 +20,7 @@ export default function TaskList({
   const numDoneTasks = tasks.filter((task) => !task.done).length;
 
   return (
-    <div className="pt-6">
+    <div className="pt-6 shadow-md">
       <ul>
         {tasks.map((task) => (
           <li
