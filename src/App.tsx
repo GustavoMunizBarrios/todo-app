@@ -33,6 +33,9 @@ export default function App() {
   function handleAddTask(task: Task) {
     setTasks((tasks) => [...tasks, task]);
   }
+  function handleDeleteCompletedTasks() {
+    setTasks((prevTasks) => prevTasks.filter((task) => !task.done));
+  }
   return (
     <div className="relative flex flex-col h-screen text-center items-center">
       <div className="flex w-screen justify-between items-center pt-11 pr-5 pl-5 pb-8">
@@ -54,6 +57,7 @@ export default function App() {
         tasks={tasks}
         handleToggleTask={handleToggleTask}
         handleDeleteTask={handleDeleteTask}
+        handleDeleteCompletedTasks={handleDeleteCompletedTasks}
       />
       <SortTasks />
       {/*       <p className="text-darkGrayishBlue text-base font-medium">

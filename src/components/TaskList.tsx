@@ -10,10 +10,12 @@ export default function TaskList({
   tasks,
   handleToggleTask,
   handleDeleteTask,
+  handleDeleteCompletedTasks,
 }: {
   tasks: Task[];
   handleToggleTask: (id: number) => void;
   handleDeleteTask: (id: number) => void;
+  handleDeleteCompletedTasks: () => void;
 }) {
   const numDoneTasks = tasks.filter((task) => !task.done).length;
 
@@ -75,7 +77,10 @@ export default function TaskList({
         >
           <p>{numDoneTasks} Tasks left</p>
 
-          <button className="hover:text-lightGrayishBlueHover">
+          <button
+            onClick={() => handleDeleteCompletedTasks()}
+            className="hover:text-lightGrayishBlueHover"
+          >
             <p>Clear Completed</p>
           </button>
         </div>
