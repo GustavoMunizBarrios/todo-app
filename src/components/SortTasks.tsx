@@ -1,25 +1,13 @@
-import { useState } from "react";
-
-export default function SortTasks() {
-  const [selectAll, setSelectAll] = useState(true);
-  const [selectActive, setSelectActive] = useState(false);
-  const [selectCompleted, setSelectCompleted] = useState(false);
-
-  function selectSortAll() {
-    setSelectAll(true);
-    setSelectActive(false);
-    setSelectCompleted(false);
-  }
-  function selectSortActive() {
-    setSelectAll(false);
-    setSelectActive(true);
-    setSelectCompleted(false);
-  }
-  function selectSortCompleted() {
-    setSelectAll(false);
-    setSelectActive(false);
-    setSelectCompleted(true);
-  }
+interface SortTasksProps {
+  setFilter: React.Dispatch<
+    React.SetStateAction<"All" | "Active" | "Completed">
+  >;
+  currentFilter: "All" | "Active" | "Completed";
+}
+export default function SortTasks({
+  setFilter,
+  currentFilter,
+}: SortTasksProps) {
   return (
     <div
       className="flex items-center justify-around 
@@ -28,20 +16,20 @@ export default function SortTasks() {
       mt-4"
     >
       <button
-        onClick={() => selectSortAll()}
-        className={selectAll ? "text-brightBlue" : ""}
+        onClick={() => setFilter("All")}
+        className={currentFilter === "All" ? "text-brightBlue" : ""}
       >
         All
       </button>
       <button
-        onClick={() => selectSortActive()}
-        className={selectActive ? "text-brightBlue" : ""}
+        onClick={() => setFilter("Active")}
+        className={currentFilter === "Active" ? "text-brightBlue" : ""}
       >
         Active
       </button>
       <button
-        onClick={() => selectSortCompleted()}
-        className={selectCompleted ? "text-brightBlue" : ""}
+        onClick={() => setFilter("Completed")}
+        className={currentFilter === "Completed" ? "text-brightBlue" : ""}
       >
         Completed
       </button>

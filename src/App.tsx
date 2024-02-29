@@ -19,6 +19,7 @@ const initialTasks: Task[] = [
 
 export default function App() {
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
+  const [filter, setFilter] = useState<"All" | "Active" | "Completed">("All");
 
   function handleToggleTask(id: number) {
     setTasks((prevTasks) =>
@@ -35,6 +36,17 @@ export default function App() {
   }
   function handleDeleteCompletedTasks() {
     setTasks((prevTasks) => prevTasks.filter((task) => !task.done));
+  }
+  function filterTasks(): Task[] {
+    switch (filter) {
+      case "Active":
+        return tasks.filter((task) => !task.done);
+      case "Completed":
+        return tasks.filter((task) => task.done);
+      case "All":
+      default:
+        return tasks;
+    }
   }
   return (
     <div className="relative flex flex-col h-screen text-center items-center">
@@ -54,12 +66,12 @@ export default function App() {
       />
       <NewTask handleAddTask={handleAddTask} />
       <TaskList
-        tasks={tasks}
+        tasks={filterTasks()}
         handleToggleTask={handleToggleTask}
         handleDeleteTask={handleDeleteTask}
         handleDeleteCompletedTasks={handleDeleteCompletedTasks}
       />
-      <SortTasks />
+      <SortTasks setFilter={setFilter} currentFilter={filter} />
       {/*       <p className="text-darkGrayishBlue text-base font-medium">
         Drag and drop to reorder list
       </p> */}
