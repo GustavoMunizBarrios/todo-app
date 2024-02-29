@@ -1,4 +1,25 @@
+import { useState } from "react";
+
 export default function SortTasks() {
+  const [selectAll, setSelectAll] = useState(true);
+  const [selectActive, setSelectActive] = useState(false);
+  const [selectCompleted, setSelectCompleted] = useState(false);
+
+  function selectSortAll() {
+    setSelectAll(true);
+    setSelectActive(false);
+    setSelectCompleted(false);
+  }
+  function selectSortActive() {
+    setSelectAll(false);
+    setSelectActive(true);
+    setSelectCompleted(false);
+  }
+  function selectSortCompleted() {
+    setSelectAll(false);
+    setSelectActive(false);
+    setSelectCompleted(true);
+  }
   return (
     <div
       className="flex items-center justify-around 
@@ -6,9 +27,24 @@ export default function SortTasks() {
       bg-veryDarkDesaturatedBlue text-darkGrayishBlue rounded-md font-[500] text-sm
       mt-4"
     >
-      <button>All</button>
-      <button>Active</button>
-      <button>Completed</button>
+      <button
+        onClick={() => selectSortAll()}
+        className={selectAll ? "text-brightBlue" : ""}
+      >
+        All
+      </button>
+      <button
+        onClick={() => selectSortActive()}
+        className={selectActive ? "text-brightBlue" : ""}
+      >
+        Active
+      </button>
+      <button
+        onClick={() => selectSortCompleted()}
+        className={selectCompleted ? "text-brightBlue" : ""}
+      >
+        Completed
+      </button>
     </div>
   );
 }
