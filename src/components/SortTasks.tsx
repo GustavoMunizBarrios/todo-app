@@ -16,11 +16,7 @@ export default function SortTasks({
       w-[20.5rem] h-12
        rounded-md font-[500] text-sm
       mt-4
-      ${
-        mode === "dark"
-          ? "bg-veryDarkDesaturatedBlue text-darkGrayishBlue"
-          : "bg-veryLightGray text-darkGrayishBlue"
-      }`}
+      ${mode === "dark" ? "bg-veryDarkDesaturatedBlue " : "bg-veryLightGray "}`}
     >
       <button
         onClick={() => setFilter("All")}
@@ -29,7 +25,9 @@ export default function SortTasks({
             ? "hover:text-lightGrayishBlueHover"
             : "hover:text-veryDarkGrayishBlue"
         } 
-        ${currentFilter === "All" ? "text-brightBlue" : ""}`}
+        ${
+          currentFilter === "All" ? "text-brightBlue" : "text-darkGrayishBlue"
+        }`}
       >
         All
       </button>
@@ -39,7 +37,11 @@ export default function SortTasks({
           mode === "dark"
             ? "hover:text-lightGrayishBlueHover"
             : "hover:text-veryDarkGrayishBlue"
-        }  ${currentFilter === "Active" ? "text-brightBlue" : ""}`}
+        }  ${
+          currentFilter === "Active"
+            ? "text-brightBlue"
+            : "text-darkGrayishBlue"
+        }`}
       >
         Active
       </button>
@@ -49,7 +51,11 @@ export default function SortTasks({
           mode === "dark"
             ? "hover:text-lightGrayishBlueHover"
             : "hover:text-veryDarkGrayishBlue"
-        }  ${currentFilter === "Completed" ? "text-brightBlue" : ""}`}
+        }  ${
+          currentFilter === "Completed"
+            ? "text-brightBlue"
+            : "text-darkGrayishBlue"
+        }`}
       >
         Completed
       </button>
