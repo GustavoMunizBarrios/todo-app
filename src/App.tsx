@@ -1,6 +1,8 @@
 import { useState } from "react";
 import bgMobileDark from "./images/bg-mobile-dark.jpg";
+import bgMobileLight from "./images/bg-mobile-light.jpg";
 import iconSun from "./images/icon-sun.svg";
+import iconMoon from "./images/icon-moon.svg";
 import NewTask from "./components/NewTask";
 import TaskList from "./components/TaskList";
 import SortTasks from "./components/SortTasks";
@@ -20,6 +22,7 @@ const initialTasks: Task[] = [
 export default function App() {
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [filter, setFilter] = useState<"All" | "Active" | "Completed">("All");
+  const [mode, setMode] = useState<"light" | "dark">("dark");
 
   function handleToggleTask(id: number) {
     setTasks((prevTasks) =>
@@ -48,23 +51,44 @@ export default function App() {
         return tasks;
     }
   }
+  function toggleMode() {
+    setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+    console.log(`Change to ${mode}`);
+  }
+
   return (
-    <div className="relative flex flex-col h-screen text-center items-center font-display">
+    <div
+      className={`relative flex flex-col h-screen text-center items-center font-display -z-50 
+      ${mode === "dark" ? "bg-veryDarkBlue" : "bg-veryLightGrayishBlue"} `}
+    >
       <div className="flex w-screen justify-between items-center pt-11 pr-5 pl-5 pb-8">
         <h1 className="text-lightGrayishBlue font-bold text-3xl tracking-[10px]">
           TODO
         </h1>
-        <button>
-          <img className="w-[25px]" src={iconSun} alt="Sun icon" />
+        <button onClick={() => toggleMode()}>
+          {mode === "dark" ? (
+            <img className="w-[25px]" src={iconSun} alt="Sun icon" />
+          ) : (
+            <img className="w-[25px]" src={iconMoon} alt="Moon icon" />
+          )}
         </button>
       </div>
 
-      <img
-        className="absolute top-0 -z-40"
-        src={bgMobileDark}
-        alt="Background dark"
-      />
-      <NewTask handleAddTask={handleAddTask} />
+      {mode === "dark" ? (
+        <img
+          className="absolute top-0 -z-10"
+          src={bgMobileDark}
+          alt="Background dark"
+        />
+      ) : (
+        <img
+          className="absolute top-0 -z-10"
+          src={bgMobileLight}
+          alt="Background Light"
+        />
+      )}
+
+      <NewTask handleAddTask={handleAddTask} mode={mode} />
       <TaskList
         tasks={filterTasks()}
         handleToggleTask={handleToggleTask}
