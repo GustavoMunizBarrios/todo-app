@@ -94,8 +94,9 @@ export default function App() {
         handleToggleTask={handleToggleTask}
         handleDeleteTask={handleDeleteTask}
         handleDeleteCompletedTasks={handleDeleteCompletedTasks}
+        mode={mode}
       />
-      <SortTasks setFilter={setFilter} currentFilter={filter} />
+      <SortTasks setFilter={setFilter} currentFilter={filter} mode={mode} />
     </div>
   );
 }

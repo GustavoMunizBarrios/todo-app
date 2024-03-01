@@ -11,11 +11,13 @@ export default function TaskList({
   handleToggleTask,
   handleDeleteTask,
   handleDeleteCompletedTasks,
+  mode,
 }: {
   tasks: Task[];
   handleToggleTask: (id: number) => void;
   handleDeleteTask: (id: number) => void;
   handleDeleteCompletedTasks: () => void;
+  mode: "light" | "dark";
 }) {
   const numDoneTasks = tasks.filter((task) => !task.done).length;
 
@@ -25,16 +27,25 @@ export default function TaskList({
         {tasks.map((task) => (
           <li
             key={task.id}
-            className="flex items-center justify-start relative
+            className={`flex items-center justify-start relative
             w-[20.5rem] h-12
-            bg-veryDarkDesaturatedBlue
-            pl-4 border-b-[1px] border-veryDarkGrayishBlue"
+            pl-4 border-b-[1px] 
+            ${
+              mode === "dark"
+                ? "bg-veryDarkDesaturatedBlue border-veryDarkGrayishBlue"
+                : "bg-veryLightGray border-veryLightGrayishBlue text-veryDarkGrayishBlue"
+            }`}
           >
             <input
               type="checkbox"
-              /* checked={task.done} */
-              className={`appearance-none w-5 h-5 rounded-full border border-veryDarkGrayishBlue mr-3 cursor-pointer
+              className={`appearance-none w-5 h-5 rounded-full border mr-3 cursor-pointer
               ${task.done ? "bg-gradient-to-r from-cyan to-pink" : ""} 
+              ${
+                mode === "dark"
+                  ? "border-veryDarkGrayishBlue"
+                  : "border-lightGrayishBlue"
+              }
+
               `}
               onChange={() => {
                 handleToggleTask(task.id);
@@ -49,10 +60,15 @@ export default function TaskList({
             />
 
             <span
-              className={`text-xs ${
-                task.done
-                  ? "text-darkGrayishBlue line-through"
-                  : "text-lightGrayishBlue"
+              className={`text-xs               
+              ${
+                mode === "dark"
+                  ? task.done
+                    ? "text-darkGrayishBlue line-through"
+                    : "text-lightGrayishBlue"
+                  : task.done
+                  ? "text-lightGrayishBlue line-through"
+                  : "text-veryDarkGrayishBlue"
               }  `}
             >
               {task.task}
@@ -69,17 +85,26 @@ export default function TaskList({
         {/* Bottom of the list (count and clear) */}
         {/* ++++++++++++++++++++++++++++++++++++ */}
         <div
-          className="flex items-center justify-between 
+          className={`flex items-center justify-between 
             w-[20.5rem] h-12 pl-4 pr-4
-            bg-veryDarkDesaturatedBlue
+            
             rounded-b-md
-            text-xs text-darkGrayishBlue"
+            text-xs 
+            ${
+              mode === "dark"
+                ? "text-darkGrayishBlue bg-veryDarkDesaturatedBlue"
+                : "bg-veryLightGray text-darkGrayishBlue"
+            }`}
         >
           <p>{numDoneTasks} Tasks left</p>
 
           <button
             onClick={() => handleDeleteCompletedTasks()}
-            className="hover:text-lightGrayishBlueHover"
+            className={`${
+              mode === "dark"
+                ? "hover:text-lightGrayishBlueHover"
+                : "hover:text-veryDarkGrayishBlue"
+            } `}
           >
             <p>Clear Completed</p>
           </button>
