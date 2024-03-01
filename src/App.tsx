@@ -62,14 +62,14 @@ export default function App() {
       ${mode === "dark" ? "bg-veryDarkBlue" : "bg-veryLightGrayishBlue"} `}
     >
       <div className="flex w-screen justify-between items-center pt-11 pr-5 pl-5 pb-8">
-        <h1 className="text-lightGrayishBlue font-bold text-3xl tracking-[10px]">
+        <h1 className="text-veryLightGray font-bold text-[1.75rem] tracking-[10px]">
           TODO
         </h1>
         <button onClick={() => toggleMode()}>
           {mode === "dark" ? (
-            <img className="w-[25px]" src={iconSun} alt="Sun icon" />
+            <img className="w-[21px]" src={iconSun} alt="Sun icon" />
           ) : (
-            <img className="w-[25px]" src={iconMoon} alt="Moon icon" />
+            <img className="w-[21px]" src={iconMoon} alt="Moon icon" />
           )}
         </button>
       </div>
