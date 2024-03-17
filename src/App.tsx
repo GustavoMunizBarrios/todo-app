@@ -1,6 +1,8 @@
 import { useState } from "react";
 import bgMobileDark from "./images/bg-mobile-dark.jpg";
 import bgMobileLight from "./images/bg-mobile-light.jpg";
+import bgDesktopDark from "./images/bg-desktop-dark.jpg";
+import bgDesktopLight from "./images/bg-desktop-light.jpg";
 import iconSun from "./images/icon-sun.svg";
 import iconMoon from "./images/icon-moon.svg";
 import NewTask from "./components/NewTask";
@@ -75,17 +77,31 @@ export default function App() {
       </div>
 
       {mode === "dark" ? (
-        <img
-          className="absolute top-0 -z-10"
-          src={bgMobileDark}
-          alt="Background dark"
-        />
+        <>
+          <img
+            className="absolute top-0 -z-10 sm:hidden"
+            src={bgMobileDark}
+            alt="Background dark"
+          />
+          <img
+            className="hidden absolute top-0 -z-10 sm:block"
+            src={bgDesktopDark}
+            alt="Background dark"
+          />
+        </>
       ) : (
-        <img
-          className="absolute top-0 -z-10"
-          src={bgMobileLight}
-          alt="Background Light"
-        />
+        <>
+          <img
+            className="absolute top-0 -z-10 sm:hidden"
+            src={bgMobileLight}
+            alt="Background Light"
+          />
+          <img
+            className="hidden absolute top-0 -z-10 sm:block"
+            src={bgDesktopLight}
+            alt="Background Light"
+          />
+        </>
       )}
 
       <NewTask handleAddTask={handleAddTask} mode={mode} />
