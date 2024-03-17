@@ -28,7 +28,7 @@ export default function TaskList({
           <li
             key={task.id}
             className={`flex items-center justify-start relative
-            w-[20.5rem] h-12
+            w-[20.5rem] h-12 sm:w-[480px] sm:h-[3.7rem]
             pl-4 border-b-[1px] 
             ${
               mode === "dark"
@@ -38,7 +38,9 @@ export default function TaskList({
           >
             <input
               type="checkbox"
-              className={`appearance-none w-5 h-5 rounded-full border mr-3 cursor-pointer
+              className={`appearance-none w-5 h-5 sm:w-6 sm:h-6
+              rounded-full border mr-3 sm:mr-4 sm:ml-2
+              cursor-pointer 
               ${task.done ? "bg-gradient-to-r from-cyan to-pink" : ""} 
               ${
                 mode === "dark"
@@ -54,13 +56,12 @@ export default function TaskList({
             <img
               src={iconCheck}
               alt="Icon for Checking Tasks"
-              className={`absolute w-2 h-2 left-[1.4rem] ${
-                task.done ? "" : "hidden"
-              }`}
+              className={`absolute w-2 h-2 left-[1.4rem] sm:w-3 sm:h-2 sm:left-[1.8rem]
+              ${task.done ? "" : "hidden"}`}
             />
 
             <span
-              className={`text-xs               
+              className={`text-xs sm:text-[1.1rem]              
               ${
                 mode === "dark"
                   ? task.done
@@ -77,7 +78,7 @@ export default function TaskList({
               onClick={() => handleDeleteTask(task.id)}
               className="ml-auto mr-4"
             >
-              <img src={iconCross} alt="cross icon" className="w-3" />
+              <img src={iconCross} alt="cross icon" className="w-3 sm:w-4" />
             </button>
           </li>
         ))}
@@ -86,10 +87,10 @@ export default function TaskList({
         {/* ++++++++++++++++++++++++++++++++++++ */}
         <div
           className={`flex items-center justify-between 
-            w-[20.5rem] h-12 pl-4 pr-4
-            
+            w-[20.5rem] h-12
+            pl-4 pr-4 sm:w-[480px] sm:h-[3.7rem]
             rounded-b-md
-            text-xs 
+            text-xs sm:text-[0.95rem]
             ${
               mode === "dark"
                 ? "text-darkGrayishBlue bg-veryDarkDesaturatedBlue"

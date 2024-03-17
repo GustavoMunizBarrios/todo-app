@@ -13,8 +13,9 @@ export default function SortTasks({
   return (
     <div
       className={`flex items-center justify-around 
-      w-[20.5rem] h-12
-       rounded-md font-[500] text-sm
+      w-[20.5rem] h-12 sm:w-[480px] sm:h-[3.7rem]
+      rounded-md 
+      font-[500] text-sm sm:text-[1.1rem]
       mt-4
       ${mode === "dark" ? "bg-veryDarkDesaturatedBlue " : "bg-veryLightGray "}`}
     >
