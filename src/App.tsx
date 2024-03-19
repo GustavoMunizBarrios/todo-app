@@ -87,12 +87,12 @@ export default function App() {
       {mode === "dark" ? (
         <>
           <img
-            className="absolute top-0 -z-10 sm:hidden"
+            className="absolute top-0 -z-10 sm:hidden "
             src={bgMobileDark}
             alt="Background dark"
           />
           <img
-            className="hidden absolute top-0 -z-10 sm:block"
+            className="hidden absolute top-0 -z-10 sm:block xl:w-[120rem]"
             src={bgDesktopDark}
             alt="Background dark"
           />
@@ -105,7 +105,7 @@ export default function App() {
             alt="Background Light"
           />
           <img
-            className="hidden absolute top-0 -z-10 sm:block"
+            className="hidden absolute top-0 -z-10 sm:block xl:w-[120rem]"
             src={bgDesktopLight}
             alt="Background Light"
           />
