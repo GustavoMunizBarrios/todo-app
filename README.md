@@ -12,3 +12,5 @@ Features:
 
 ![Screenshot](./src/images/todo-dark-desktop.jpeg)
 ![Screenshot](./src/images/todo-light-desktop.jpeg)
+![Screenshot](./src/images/todo-dark-mobile.jpeg)
+![Screenshot](./src/images/todo-light-mobile.jpeg)
